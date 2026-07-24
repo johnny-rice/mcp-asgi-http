@@ -58,8 +58,10 @@ nav:
       - Enrich and playbook: guide/enrich-playbook.md
   - Samples:
       - Overview: samples/index.md
-      - Notes demo: samples/notes.md
+      - Ops dual-auth: samples/ops-dual-auth.md
+      - Clinical intel: samples/clinical-intel.md
       - Catalog demo: samples/catalog.md
+      - Notes demo: samples/notes.md
   - Blog: blog/index.md
   - Related work: related.md
 

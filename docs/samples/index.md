@@ -2,10 +2,12 @@
 
 Runnable apps under [`samples/`](https://github.com/johnny-rice/mcp-asgi-http/tree/main/samples) in the repo. Each has a Dockerfile so you can publish a live instance.
 
-| Sample | What it shows | Live |
+| Sample | What it shows | Role |
 |---|---|---|
-| [Notes](notes.md) | FastAPI + MCP + small web UI, API key auth | See sample README for URL after deploy |
-| [Catalog](catalog.md) | Enrich hooks, agent playbook, public guide page | See sample README for URL after deploy |
+| [Ops dual-auth](ops-dual-auth.md) | DualAuth (API key + optional JWT), ops REST twin, freeze checks | **Hero** |
+| [Clinical intel](clinical-intel.md) | Scientist knowledge UI, enrich hrefs, agent playbook (fixtures only) | **Hero** |
+| [Catalog](catalog.md) | Enrich hooks + playbook on a small read model | Supporting |
+| [Notes](notes.md) | Minimal UI + API key + `once_ready` | Supporting |
 
 Short snippets without a UI live under [`examples/`](https://github.com/johnny-rice/mcp-asgi-http/tree/main/examples).
 

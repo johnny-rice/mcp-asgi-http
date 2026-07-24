@@ -2,6 +2,8 @@
 
 Source: [`samples/catalog/`](https://github.com/johnny-rice/mcp-asgi-http/tree/main/samples/catalog)
 
+Supporting enrich/playbook sample (prefer [clinical intel](clinical-intel.md) for a knowledge-style hero):
+
 - Catalog UI
 - Open MCP (`auth=None` for the public demo)
 - Enrich hooks add `href` when `SITE_URL` is set

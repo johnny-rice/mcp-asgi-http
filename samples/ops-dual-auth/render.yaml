@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: mcp-asgi-http-ops
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: ../..
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: MCP_API_KEY
+        generateValue: true
+      - key: SITE_URL
+        sync: false

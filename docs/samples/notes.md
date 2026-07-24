@@ -2,6 +2,8 @@
 
 Source: [`samples/notes/`](https://github.com/johnny-rice/mcp-asgi-http/tree/main/samples/notes)
 
+Supporting sample (prefer [ops dual-auth](ops-dual-auth.md) as the hosted hero):
+
 - Web UI for notes
 - REST under `/api/notes`
 - MCP at `/mcp` with API key auth (`MCP_API_KEY`)

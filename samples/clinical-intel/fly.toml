@@ -1,0 +1,27 @@
+# Deploy from repo root:
+#   fly apps create mcp-asgi-http-clinical
+#   fly secrets set MCP_API_KEY=... SITE_URL=https://mcp-asgi-http-clinical.fly.dev
+#   fly deploy -c samples/clinical-intel/fly.toml
+
+app = "mcp-asgi-http-clinical"
+primary_region = "iad"
+
+[build]
+  dockerfile = "samples/clinical-intel/Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[http_service.checks]]
+  interval = "15s"
+  timeout = "2s"
+  grace_period = "5s"
+  method = "GET"
+  path = "/health"

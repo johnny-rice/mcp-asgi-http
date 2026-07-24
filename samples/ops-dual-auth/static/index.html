@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ops dual-auth · mcp-asgi-http</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Ops dual-auth</h1>
+      <p>
+        Internal-ops REST twin plus MCP at <code>/mcp</code> with
+        <strong>DualAuth</strong> (API key for agents, JWT when configured).
+        Built with <a href="https://github.com/johnny-rice/mcp-asgi-http">mcp-asgi-http</a>.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>Connect an MCP client</h2>
+      <dl id="connect">
+        <dt>URL</dt>
+        <dd><code id="mcp-url"></code></dd>
+        <dt>API key</dt>
+        <dd><code>X-API-Key: &lt;MCP_API_KEY&gt;</code></dd>
+        <dt>JWT</dt>
+        <dd id="jwt-status" class="muted">Loading…</dd>
+      </dl>
+      <p class="muted">
+        Agents typically use the API key. Humans can use the same tools with a
+        Bearer JWT when <code>JWT_ISSUER</code>, <code>JWT_AUDIENCE</code>, and
+        <code>JWT_JWKS_URL</code> are set.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Services</h2>
+      <ul id="services" class="list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Recent deploys</h2>
+      <ul id="deploys" class="list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Freeze windows</h2>
+      <ul id="freezes" class="list"></ul>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clinical intel · mcp-asgi-http</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Clinical intel</h1>
+      <p>
+        Synthetic CT.gov-shaped fixtures with REST + MCP, enrich <code>href</code>
+        links, and an agent playbook. Built with
+        <a href="https://github.com/johnny-rice/mcp-asgi-http">mcp-asgi-http</a>.
+        Not real trial or company data.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>Connect an MCP client</h2>
+      <dl>
+        <dt>URL</dt>
+        <dd><code id="mcp-url"></code></dd>
+        <dt>Header</dt>
+        <dd><code>X-API-Key: &lt;MCP_API_KEY&gt;</code></dd>
+        <dt>Guide</dt>
+        <dd><a href="/agent-guide.md">/agent-guide.md</a></dd>
+      </dl>
+    </section>
+
+    <section class="panel">
+      <h2>Trials</h2>
+      <form class="search" id="search">
+        <input name="q" placeholder="Search phase, condition, BRAF…" />
+        <button type="submit">Search</button>
+      </form>
+      <ul id="trials" class="list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Companies</h2>
+      <ul id="companies" class="list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Targets</h2>
+      <ul id="targets" class="list"></ul>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

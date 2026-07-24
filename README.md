@@ -62,8 +62,10 @@ Short snippets: [`examples/`](examples/)
 
 Full stack apps (Docker / Fly / Render): [`samples/`](samples/)
 
-1. [`samples/notes`](samples/notes) - UI + REST + API-key MCP
-2. [`samples/catalog`](samples/catalog) - UI + open MCP + playbook
+1. [`samples/ops-dual-auth`](samples/ops-dual-auth) - DualAuth + ops REST twin (hero)
+2. [`samples/clinical-intel`](samples/clinical-intel) - fixtures + enrich + playbook (hero)
+3. [`samples/catalog`](samples/catalog) - supporting enrich/playbook UI
+4. [`samples/notes`](samples/notes) - supporting API-key + `once_ready` UI
 
 ## Development
 
