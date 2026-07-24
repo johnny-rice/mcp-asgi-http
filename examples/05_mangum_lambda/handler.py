@@ -18,7 +18,7 @@ _ready = False
 
 
 async def warm() -> None:
-    """Stand-in for DB pool / cache warm under lifespan=\"off\"."""
+    """Example lazy init when lifespan is off (e.g. open a DB pool)."""
     global _ready
     _ready = True
 
@@ -38,5 +38,5 @@ app = mount_mcp(
     on_ready=once_ready(warm),
 )
 
-# Lifespan off: FastAPI lifespan never runs — use on_ready instead.
+# Lifespan off: FastAPI lifespan never runs; use on_ready instead.
 handler = Mangum(app, lifespan="off")

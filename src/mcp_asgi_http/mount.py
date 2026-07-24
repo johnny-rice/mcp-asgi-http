@@ -23,7 +23,7 @@ def mount_mcp(
     Wrap ``app`` so ``prefix`` is handled by a stateless Streamable HTTP MCP ASGI app.
 
     Returns the outer ASGI app (path middleware wrapping the original app).
-    Prefer this over Starlette ``Mount`` when deploying under Mangum / Function URL.
+    Use this instead of Starlette ``Mount`` under Mangum / Function URL.
     """
     mcp_asgi = StatelessMCPASGIApp(mcp_server, auth=auth, on_ready=on_ready)
     return McpPathMiddleware(app, mcp_asgi, prefix=prefix)

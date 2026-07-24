@@ -1,11 +1,10 @@
 # mcp-asgi-http
 
-**ASGI glue for remote MCP** — mount [Streamable HTTP](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports) beside your API, with pluggable auth that works under serverless (`Mangum` + `lifespan="off"`).
+Mount an MCP server on an ASGI app over [Streamable HTTP](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports). Includes optional request auth and helpers that work when ASGI lifespan is off (for example Mangum on Lambda).
 
 ```bash
 pip install mcp-asgi-http
-# JWT backends:
-pip install 'mcp-asgi-http[jwt]'
+pip install 'mcp-asgi-http[jwt]'   # if you use JwtAuth / dual JWT
 ```
 
 ```python
@@ -14,56 +13,57 @@ from mcp.server import Server
 from mcp_asgi_http import ApiKeyAuth, mount_mcp
 
 server = Server("demo")
-# ... register tools on server ...
+# register tools on server
 
 api = FastAPI(redirect_slashes=False)
 app = mount_mcp(
     api,
     server,
-    auth=ApiKeyAuth(allowed_keys={"dev-secret"}),  # or auth=None for consumer-owned auth
+    auth=ApiKeyAuth(allowed_keys={"dev-secret"}),
+    # auth=None if you authenticate in API Gateway or your own middleware
 )
 ```
 
-## What you get
+## Components
 
-| Piece | Purpose |
+| Piece | Role |
 |---|---|
 | `StatelessMCPASGIApp` | Per-request Streamable HTTP (`stateless=True`, JSON responses) |
-| `McpPathMiddleware` / `mount_mcp` | `/mcp` dispatch without Mount slash-redirect loops |
-| Pluggable auth | Built-in `api_key` / `jwt` / `dual`, or `auth=None` if you gate upstream |
-| `once_ready` | Lazy init when ASGI lifespan is off (Lambda) |
-| Enrich + playbook helpers | Deep-link hooks; agent-guide as MCP resource + HTTP twin |
+| `McpPathMiddleware` / `mount_mcp` | Route `/mcp` without Starlette Mount slash-redirect issues |
+| Auth backends | `api_key`, `jwt`, `dual`, or `auth=None` |
+| `once_ready` | Run lazy init once when lifespan is off |
+| Enrich / playbook helpers | Optional deep-link hooks; markdown guide as MCP resource + HTTP route |
 
-## Auth modes
+## Auth
 
 | Mode | Behavior |
 |---|---|
-| `auth=None` / `build_auth_backend("none")` | No library gate — **consumer-owned** (API Gateway, your middleware) |
+| `auth=None` / `build_auth_backend("none")` | No auth in this library (use your gateway or middleware) |
 | `ApiKeyAuth` / `"api_key"` | `Authorization: Bearer` or `X-API-Key` |
-| `JwtAuth` / `"jwt"` | Bearer JWT via JWKS (`issuer` + `audience`; optional `jwks_url`) |
-| `DualAuth` / `"dual"` | API key fast-path, else JWT |
+| `JwtAuth` / `"jwt"` | Bearer JWT via JWKS (`issuer`, `audience`, optional `jwks_url`) |
+| `DualAuth` / `"dual"` | API key first, then JWT |
 
-## Not these projects
+## Related projects
 
-This library is **not**:
+These are different tools:
 
-- [FastMCP](https://github.com/jlowin/fastmcp) — use FastMCP (or the official SDK) for tool DX; use this to mount/ops
-- [AWS Serverless MCP Server](https://aws.amazon.com/blogs/compute/introducing-aws-serverless-mcp-server-ai-powered-development-for-modern-applications/) — that is an MCP *tool server* for SAM/Lambda guidance
-- [invariantlabs-ai/mcp-streamable-http](https://github.com/invariantlabs-ai/mcp-streamable-http) — transport *examples*, not a mount library
-- [`mcp-streamablehttp-proxy`](https://pypi.org/project/mcp-streamablehttp-proxy/) / [`-client`](https://pypi.org/project/mcp-streamablehttp-client/) — stdio↔HTTP bridges
-
-Lambda / Function URL is a **supported deploy target**, not the product name.
+| Project | Difference |
+|---|---|
+| [FastMCP](https://github.com/jlowin/fastmcp) | Tool registration / DX. This package is for mounting and HTTP auth. |
+| [AWS Serverless MCP Server](https://aws.amazon.com/blogs/compute/introducing-aws-serverless-mcp-server-ai-powered-development-for-modern-applications/) | MCP tools for SAM/Lambda development, not an ASGI mount library. |
+| [invariantlabs-ai/mcp-streamable-http](https://github.com/invariantlabs-ai/mcp-streamable-http) | Transport examples. |
+| [`mcp-streamablehttp-proxy`](https://pypi.org/project/mcp-streamablehttp-proxy/) / [`mcp-streamablehttp-client`](https://pypi.org/project/mcp-streamablehttp-client/) | stdio ↔ HTTP bridges. |
 
 ## Examples
 
-See [`examples/`](examples/):
+Under [`examples/`](examples/):
 
-1. FastAPI minimal  
-2. API key auth  
-3. Dual JWT + API key  
-4. Consumer-owned auth (`auth=None`)  
-5. Mangum `lifespan="off"` + `once_ready`  
-6. Enrich hooks + agent playbook  
+1. FastAPI minimal
+2. API key auth
+3. Dual JWT + API key
+4. Auth handled outside this library (`auth=None`)
+5. Mangum with `lifespan="off"` and `once_ready`
+6. Enrich hooks and agent playbook
 
 ## Development
 

@@ -1,6 +1,6 @@
-# 01 — FastAPI minimal
+# 01 FastAPI minimal
 
-Mount a tiny MCP server at `/mcp` next to a REST `/health` route. No auth.
+Mount a small MCP server at `/mcp` next to a REST `/health` route. No auth.
 
 ```bash
 pip install -e '.[dev]'

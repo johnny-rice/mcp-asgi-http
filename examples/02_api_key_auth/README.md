@@ -1,4 +1,4 @@
-# 02 — API key auth
+# 02 API key auth
 
 Send `Authorization: Bearer <key>` or `X-API-Key: <key>`.
 

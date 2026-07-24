@@ -1,6 +1,6 @@
-# 04 — Consumer-owned auth
+# 04 Auth outside this library
 
-Put auth in API Gateway, a reverse proxy, or your own middleware. Pass `auth=None` to `mount_mcp` so the library does not double-gate.
+Authenticate in API Gateway, a reverse proxy, or your own middleware. Pass `auth=None` to `mount_mcp`.
 
 ```bash
 export GATEWAY_KEY=gateway-secret

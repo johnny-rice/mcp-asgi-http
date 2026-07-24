@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "mcp-asgi-http"
 version = "0.1.0"
-description = "ASGI glue for remote MCP — mount Streamable HTTP beside your API with pluggable auth."
+description = "Mount MCP Streamable HTTP on ASGI apps with optional request auth."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.10"

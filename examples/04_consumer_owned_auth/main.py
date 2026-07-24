@@ -21,7 +21,7 @@ EXPECTED = os.environ.get("GATEWAY_KEY", "gateway-secret")
 
 
 class ConsumerAuthMiddleware:
-    """Stand-in for API Gateway authorizer / shared FastAPI auth middleware."""
+    """Example gateway/auth middleware in front of MCP."""
 
     def __init__(self, app: Any) -> None:
         self.app = app
@@ -38,7 +38,7 @@ class ConsumerAuthMiddleware:
 
 
 api = FastAPI(title="mcp-asgi-http consumer auth", redirect_slashes=False)
-# auth=None — library does not authenticate; consumer middleware owns it.
+# auth=None: this library does not authenticate; middleware above does.
 mounted = mount_mcp(api, make_echo_server(), auth=None)
 app = ConsumerAuthMiddleware(mounted)
 

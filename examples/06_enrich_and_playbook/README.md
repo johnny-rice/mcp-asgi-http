@@ -1,7 +1,6 @@
-# 06 — Enrich + playbook
+# 06 Enrich + playbook
 
-- Tool results get an `href` deep link via enrich hooks
-- Agent guide is an MCP resource (`mcp://docs/agent-guide`) and `GET /agent-guide.md`
+Tool results get an `href` via enrich hooks. The agent guide is an MCP resource (`mcp://docs/agent-guide`) and `GET /agent-guide.md`.
 
 ```bash
 python examples/06_enrich_and_playbook/main.py

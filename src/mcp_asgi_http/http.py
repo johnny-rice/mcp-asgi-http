@@ -1,4 +1,4 @@
-"""Stateless Streamable HTTP ASGI app for MCP (serverless-friendly)."""
+"""Stateless Streamable HTTP ASGI app for MCP."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class McpPathMiddleware:
     """Dispatch ``/mcp`` without Starlette Mount trailing-slash redirects.
 
-    Useful under Mangum / Function URL where slash redirects can 404 or loop.
+    Avoids slash-redirect 404s/loops under Mangum and Function URL.
     """
 
     def __init__(self, app: Any, mcp_app: Any, *, prefix: str = "/mcp") -> None:

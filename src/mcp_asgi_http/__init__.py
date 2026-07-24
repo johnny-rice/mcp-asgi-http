@@ -1,4 +1,4 @@
-"""ASGI glue for remote MCP over Streamable HTTP."""
+"""Mount MCP Streamable HTTP on ASGI apps."""
 
 from mcp_asgi_http.auth import (
     ApiKeyAuth,
