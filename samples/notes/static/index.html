@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes demo · mcp-asgi-http</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Notes demo</h1>
+      <p>
+        REST UI plus MCP at <code>/mcp</code> (API key required).
+        Built with <a href="https://github.com/johnny-rice/mcp-asgi-http">mcp-asgi-http</a>.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>Connect an MCP client</h2>
+      <dl id="connect">
+        <dt>URL</dt>
+        <dd><code id="mcp-url"></code></dd>
+        <dt>Header</dt>
+        <dd><code>X-API-Key: &lt;MCP_API_KEY&gt;</code></dd>
+      </dl>
+      <p class="muted">Set the same key in the host env when you deploy.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Notes</h2>
+      <form id="create">
+        <label>
+          Title
+          <input name="title" required maxlength="200" />
+        </label>
+        <label>
+          Body
+          <textarea name="body" rows="3" maxlength="8000"></textarea>
+        </label>
+        <button type="submit">Add note</button>
+      </form>
+      <ul id="notes"></ul>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

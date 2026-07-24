@@ -2,6 +2,8 @@
 
 Mount an MCP server on an ASGI app over [Streamable HTTP](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports). Includes optional request auth and helpers that work when ASGI lifespan is off (for example Mangum on Lambda).
 
+**Docs and blog:** [johnny-rice.github.io/mcp-asgi-http](https://johnny-rice.github.io/mcp-asgi-http/)
+
 ```bash
 pip install mcp-asgi-http
 pip install 'mcp-asgi-http[jwt]'   # if you use JwtAuth / dual JWT
@@ -54,16 +56,14 @@ These are different tools:
 | [invariantlabs-ai/mcp-streamable-http](https://github.com/invariantlabs-ai/mcp-streamable-http) | Transport examples. |
 | [`mcp-streamablehttp-proxy`](https://pypi.org/project/mcp-streamablehttp-proxy/) / [`mcp-streamablehttp-client`](https://pypi.org/project/mcp-streamablehttp-client/) | stdio ↔ HTTP bridges. |
 
-## Examples
+## Examples and samples
 
-Under [`examples/`](examples/):
+Short snippets: [`examples/`](examples/)
 
-1. FastAPI minimal
-2. API key auth
-3. Dual JWT + API key
-4. Auth handled outside this library (`auth=None`)
-5. Mangum with `lifespan="off"` and `once_ready`
-6. Enrich hooks and agent playbook
+Full stack apps (Docker / Fly / Render): [`samples/`](samples/)
+
+1. [`samples/notes`](samples/notes) - UI + REST + API-key MCP
+2. [`samples/catalog`](samples/catalog) - UI + open MCP + playbook
 
 ## Development
 
@@ -71,6 +71,7 @@ Under [`examples/`](examples/):
 python -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
 pytest -q
+mkdocs serve   # local docs site
 ```
 
 ## License

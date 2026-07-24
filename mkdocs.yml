@@ -1,0 +1,69 @@
+site_name: mcp-asgi-http
+site_description: Mount MCP Streamable HTTP on ASGI apps with optional request auth.
+site_url: https://johnny-rice.github.io/mcp-asgi-http/
+repo_url: https://github.com/johnny-rice/mcp-asgi-http
+repo_name: johnny-rice/mcp-asgi-http
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+
+plugins:
+  - search
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      authors: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Guide:
+      - Install: guide/install.md
+      - Quickstart: guide/quickstart.md
+      - Auth: guide/auth.md
+      - Serverless: guide/serverless.md
+      - Enrich and playbook: guide/enrich-playbook.md
+  - Samples:
+      - Overview: samples/index.md
+      - Notes demo: samples/notes.md
+      - Catalog demo: samples/catalog.md
+  - Blog: blog/index.md
+  - Related work: related.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/johnny-rice/mcp-asgi-http

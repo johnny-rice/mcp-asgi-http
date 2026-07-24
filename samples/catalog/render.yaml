@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mcp-asgi-http-catalog
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: ../..
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: SITE_URL
+        sync: false

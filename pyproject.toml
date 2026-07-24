@@ -31,8 +31,9 @@ dependencies = [
 
 [project.optional-dependencies]
 jwt = ["PyJWT[crypto]>=2.8"]
+docs = ["mkdocs-material>=9.5"]
 dev = [
-    "mcp-asgi-http[jwt]",
+    "mcp-asgi-http[jwt,docs]",
     "pytest>=8.0",
     "pytest-asyncio>=0.23",
     "httpx>=0.27",
@@ -42,7 +43,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/johnny-rice/mcp-asgi-http"
+Homepage = "https://johnny-rice.github.io/mcp-asgi-http/"
+Documentation = "https://johnny-rice.github.io/mcp-asgi-http/"
 Repository = "https://github.com/johnny-rice/mcp-asgi-http"
 Issues = "https://github.com/johnny-rice/mcp-asgi-http/issues"
 
