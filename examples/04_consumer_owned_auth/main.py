@@ -1,4 +1,4 @@
-"""Consumer-owned auth: gate outside MCP, pass auth=None to the library."""
+"""Authenticate outside MCP; pass auth=None to the library."""
 
 from __future__ import annotations
 

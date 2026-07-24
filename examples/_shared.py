@@ -1,4 +1,4 @@
-"""Tiny shared MCP echo server for examples."""
+"""Shared MCP echo server for examples."""
 
 from __future__ import annotations
 

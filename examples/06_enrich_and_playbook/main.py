@@ -1,4 +1,4 @@
-"""Enrich tool results + serve an agent playbook as MCP resource and HTTP twin."""
+"""Enrich tool results and serve a markdown agent guide as MCP resource + HTTP."""
 
 from __future__ import annotations
 
